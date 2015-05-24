@@ -88,7 +88,12 @@ def side_by_side(*blocks):
 		lines.append(' '.join(tup))
 	return '\n'.join(lines)
 
-with open('dungeon.json') as f:
+from optparse import OptionParser
+
+parser = OptionParser()
+(options, args) = parser.parse_args()
+
+with open(args[0]) as f:
 	design = parse_json_result(f)
 	print render_ascii_dungeon(design)
 
